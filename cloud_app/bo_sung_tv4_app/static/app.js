@@ -114,3 +114,15 @@ bootstrap();
 $('clear-text').addEventListener('click',()=>{$('text').value='';clearError();invalidate();$('text').focus();});
 document.addEventListener('click',event=>{if(!$('manage-menu').contains(event.target))$('manage-menu').open=false;});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&$('manage-menu').open){$('manage-menu').open=false;$('manage-menu').querySelector('summary').focus();}});
+
+
+// Safety fallback: Tự động gỡ splash sau tối đa 2.5s phòng khi mạng chậm hoặc lỗi
+setTimeout(() => {
+  const splash = document.getElementById('splash-view');
+  if (splash) {
+    splash.remove();
+    if (!user && document.getElementById('auth-view')?.hidden && document.getElementById('app-view')?.hidden) {
+      authView('');
+    }
+  }
+}, 2500);
