@@ -1,8 +1,9 @@
 services:
   - type: web
     name: sms-spam-detector-ai
-    env: docker
+    runtime: docker
     plan: free
+    region: singapore
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/health
     envVars:
