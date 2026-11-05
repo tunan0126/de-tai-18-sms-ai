@@ -1,0 +1,11 @@
+{
+  "model_sha256": "3e9df8a5afe88646fc053bd8d053bd9c888ae68532785f5b521243a01d2e9dcc",
+  "normalizer_sha256": "1898f5d9fa552b047985ad8bc4100fa4f84aa7db7af115691587642055a44f4d",
+  "dataset_id": "vi-tv1-v2-808628074b11",
+  "dataset_manifest_sha256": "7ea862d319044c84072260d3c15db804f91a589306a598bacd3a471256b610ae",
+  "normalization": "vi-nfc-redact-accentfold-v2",
+  "architecture": "SVM",
+  "representation": "TFIDF-word+char",
+  "language": "vi",
+  "source_script_sha256": "9ca01749e91b0d2cb8bfa8c53a3eb9f3f7859fa3bdb1551739b2df14fd5d4d1e"
+}

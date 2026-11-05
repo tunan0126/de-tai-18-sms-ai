@@ -1,0 +1,22 @@
+{
+  "language": "vi",
+  "dataset_id": "vi-tv4-revision-290ff246dbd5",
+  "model_sha256": "5ca95f87443b57f0de1a637022bb64b73b8cd431bb95941772312a108ceb515f",
+  "score_decimals": 12,
+  "architecture": "LogisticRegression",
+  "representation": "TFIDF char_wb",
+  "model_origin": "tv4_vi_revision",
+  "source_script_sha256": "ae1f574e344bb40ee266d94a4cccaa79e171f3311fd21206f962b3d7af6e0ae9",
+  "inputs_sha256": {
+    "traditional_ml/bo_sung_tv2/vi/data/train.csv": "5aa95ac6423b663046b2c3b586cc1e27b0b947d639cca6520ea5c772d956c74e",
+    "traditional_ml/bo_sung_tv2/vi/data/val.csv": "5714f68dfe13d913f6aca68047dadebb5a82271753511841985c32ed9f1ac332",
+    "cloud_app/bo_sung_tv4_app/vi_model_revision/data/train_authored.csv": "187759e3f601e8b3b08bca01cdc4ffac7d389249f0adfcca7b2fd9c586fe6e9b",
+    "cloud_app/bo_sung_tv4_app/vi_model_revision/data/validation_authored.csv": "a46f180da041e2b34cb2ff0eee44b6f8a6d7b6e408ad6db2327fc55d66218c92"
+  },
+  "packages": {
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0"
+  }
+}

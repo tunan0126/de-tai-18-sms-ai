@@ -1,0 +1,38 @@
+{
+  "threshold": 0.574778065562,
+  "selection": {
+    "vector": "TFIDF-word+char",
+    "model": "SVM",
+    "threshold": 0.574778065562,
+    "eligible": true,
+    "legacy_regression_release_errors": 0,
+    "rank": [
+      0.9523809523809523,
+      0.9587079587079587,
+      0.9583333333333334
+    ],
+    "validation_source": {
+      "Precision": 0.9583,
+      "Recall": 0.9718,
+      "F1": 0.965,
+      "TN": 161,
+      "FP": 3,
+      "FN": 2,
+      "TP": 69,
+      "ROC_AUC": 0.9985,
+      "PR_AUC": 0.9967
+    },
+    "validation_authored": {
+      "Precision": 0.9677,
+      "Recall": 0.9375,
+      "F1": 0.9524,
+      "TN": 31,
+      "FP": 1,
+      "FN": 2,
+      "TP": 30,
+      "ROC_AUC": 0.9834,
+      "PR_AUC": 0.9867
+    }
+  },
+  "criterion": "max min(source/authored val F1), then mean F1 and min precision; gates source P>=.90 R>=.95, authored P/R>=.90; previously seen 24 regression cases are a release gate, not independent evaluation"
+}

@@ -1,0 +1,9 @@
+{
+  "ml": {
+    "model_sha256": "5ca95f87443b57f0de1a637022bb64b73b8cd431bb95941772312a108ceb515f",
+    "config_sha256": "95109bab5b12c468fc81c381f47dfcddeb2623bf519c1cc0444a9dfffa7b4dcf"
+  },
+  "dl": {
+    "config_sha256": "2114c41d518c59cab28eb6aec886ad6726f5bbb1ae99f87bc5c3fea5c6e29755"
+  }
+}

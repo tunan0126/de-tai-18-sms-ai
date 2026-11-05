@@ -1,0 +1,10 @@
+{
+  "nguong": 0.6801127715809915,
+  "nhan": {
+    "0": "ham",
+    "1": "spam"
+  },
+  "input": "list[str]",
+  "goi": "round(model.predict_proba(texts)[:,1], 12) >= nguong -> spam",
+  "score_decimals": 12
+}

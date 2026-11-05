@@ -1,0 +1,99 @@
+{
+  "du_lieu": {
+    "nguon": "UCI SMS Spam Collection (tự chia 80/20, stratify, seed 42)",
+    "cach_chia_val": "ngau nhien",
+    "val_co_mau_cau_trong_train": 0.031,
+    "test_co_mau_cau_trong_train": 0.031,
+    "train": 3619,
+    "val": 517,
+    "test": 1035,
+    "ti_le_spam_train": 0.1263,
+    "ti_le_spam_val": 0.1257,
+    "ti_le_spam_test": 0.1266
+  },
+  "cau_hinh_chon": {
+    "model": "RandomForest",
+    "vector": "TFIDF",
+    "dac_trung": "TFIDF + Regex",
+    "xu_ly_mat_can_bang": "balanced",
+    "best_params": {
+      "clf__max_depth": null,
+      "vec__txt__ngram_range": [
+        1,
+        2
+      ]
+    },
+    "val_f1_mac_dinh": 0.9922,
+    "val_f1_tinh_chinh": 0.9922,
+    "dung_ban_tinh_chinh": true
+  },
+  "nguong": {
+    "nguong_toi_uu_val": 0.52,
+    "val_f1_o_0.5": 0.9922,
+    "val_f1_o_nguong_moi": 0.9922,
+    "nguong_dung": 0.5
+  },
+  "test_cuoi": {
+    "Precision": 1.0,
+    "Recall": 0.9237,
+    "F1": 0.9603,
+    "ROC_AUC": 0.9977,
+    "PR_AUC": 0.989,
+    "TN": 904,
+    "FP": 0,
+    "FN": 10,
+    "TP": 121
+  },
+  "test_theo_nhom_mau_cau": {
+    "mau_cau_da_thay_trong_train": {
+      "so_tin": 38,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "ROC_AUC": 1.0,
+      "PR_AUC": 1.0,
+      "TN": 1,
+      "FP": 0,
+      "FN": 0,
+      "TP": 37
+    },
+    "mau_cau_moi": {
+      "so_tin": 997,
+      "Precision": 1.0,
+      "Recall": 0.8936,
+      "F1": 0.9438,
+      "ROC_AUC": 0.9968,
+      "PR_AUC": 0.9809,
+      "TN": 903,
+      "FP": 0,
+      "FN": 10,
+      "TP": 84
+    }
+  },
+  "cv5_train_val": {
+    "precision": "0.9857 ± 0.0124",
+    "recall": "0.9177 ± 0.0228",
+    "f1": "0.9504 ± 0.0155"
+  },
+  "thoi_gian_suy_luan": {
+    "batch_1035_tin_s": 0.17,
+    "1_tin_ms": 15.74
+  },
+  "phien_ban": {
+    "python": "3.13.8",
+    "sklearn": "1.9.1",
+    "pandas": "3.1.1",
+    "numpy": "2.5.4"
+  },
+  "export_check": {
+    "score_decimals": 12,
+    "n_jobs": 1,
+    "note": "Điểm/nhãn tính lại bằng pipeline đã xuất, không chọn lại ngưỡng theo test."
+  },
+  "selection_scope": {
+    "candidates": 27,
+    "includes_bow": true,
+    "criterion": "validation F1, tie by Precision; tuning CV uses train only",
+    "test_used_for_selection": false
+  }
+}

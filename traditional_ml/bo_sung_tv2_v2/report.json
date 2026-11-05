@@ -1,0 +1,72 @@
+{
+  "selected": {
+    "vector": "TFIDF-word+char",
+    "model": "SVM",
+    "threshold": 0.574778065562,
+    "eligible": true,
+    "legacy_regression_release_errors": 0,
+    "rank": [
+      0.9523809523809523,
+      0.9587079587079587,
+      0.9583333333333334
+    ],
+    "validation_source": {
+      "Precision": 0.9583,
+      "Recall": 0.9718,
+      "F1": 0.965,
+      "TN": 161,
+      "FP": 3,
+      "FN": 2,
+      "TP": 69,
+      "ROC_AUC": 0.9985,
+      "PR_AUC": 0.9967
+    },
+    "validation_authored": {
+      "Precision": 0.9677,
+      "Recall": 0.9375,
+      "F1": 0.9524,
+      "TN": 31,
+      "FP": 1,
+      "FN": 2,
+      "TP": 30,
+      "ROC_AUC": 0.9834,
+      "PR_AUC": 0.9867
+    }
+  },
+  "results": {
+    "test": {
+      "Precision": 0.8819,
+      "Recall": 0.8421,
+      "F1": 0.8615,
+      "TN": 414,
+      "FP": 15,
+      "FN": 21,
+      "TP": 112,
+      "ROC_AUC": 0.9725,
+      "PR_AUC": 0.9246
+    },
+    "challenge": {
+      "Precision": 0.95,
+      "Recall": 0.7917,
+      "F1": 0.8636,
+      "TN": 23,
+      "FP": 1,
+      "FN": 5,
+      "TP": 19,
+      "ROC_AUC": 0.9878,
+      "PR_AUC": 0.9866
+    },
+    "regression": {
+      "Precision": 0.9688,
+      "Recall": 0.9688,
+      "F1": 0.9688,
+      "TN": 31,
+      "FP": 1,
+      "FN": 1,
+      "TP": 31,
+      "ROC_AUC": 0.9932,
+      "PR_AUC": 0.9941
+    }
+  },
+  "provenance": "Original corpus + synthetic development coverage; new challenge authored by assistant, not real independent human-labelled SMS. Seen 24 legacy regression cases excluded from fitting and used only as explicit release gate after validation thresholds are chosen; remaining seen cases are diagnostics. No challenge/test used for choosing model or threshold."
+}

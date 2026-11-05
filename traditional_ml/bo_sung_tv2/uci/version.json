@@ -1,0 +1,17 @@
+{
+  "language": "uci",
+  "dataset_id": "uci-sms-seed42-original-random-split",
+  "model_sha256": "b9f2fb55af7a31bf090bf72a721e780410a27b370e159367a4e4de446bb0cb9b",
+  "source_train_script_sha256": "14ad01b94fc25445e7f7f62ce0366b2afb70cf2870d8b1b0384acfffaccb9819",
+  "normalization": "none",
+  "evaluation_note": "Kế thừa mã TV2 gốc: các thí nghiệm báo điểm test; không phải test mới hoàn toàn chưa dùng.",
+  "packages": {
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0"
+  },
+  "score_decimals": 12,
+  "source_selection_script_sha256": "f59727c977b53156a4ee3cdc03bb82350519a78495ab43d4ac162fa09a71b4c1"
+}

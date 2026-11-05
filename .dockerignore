@@ -1,0 +1,7 @@
+**/__pycache__
+**/.venv
+**/instance
+**/.git
+**/*.sqlite3*
+**/*.db
+**/.env

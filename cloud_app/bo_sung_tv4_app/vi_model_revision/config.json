@@ -1,0 +1,8 @@
+{
+  "nguong": 0.58562407619,
+  "score_decimals": 12,
+  "nhan": {
+    "0": "ham",
+    "1": "spam"
+  }
+}

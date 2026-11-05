@@ -1,0 +1,99 @@
+{
+  "du_lieu": {
+    "nguon": "file của nhóm: train_clean.csv, test_clean.csv",
+    "cach_chia_val": "theo nhom mau cau",
+    "val_co_mau_cau_trong_train": 0.0,
+    "test_co_mau_cau_trong_train": 0.107,
+    "train": 1640,
+    "val": 235,
+    "test": 562,
+    "ti_le_spam_train": 0.303,
+    "ti_le_spam_val": 0.3021,
+    "ti_le_spam_test": 0.2367
+  },
+  "cau_hinh_chon": {
+    "model": "LogReg",
+    "vector": "BoW",
+    "dac_trung": "BoW",
+    "xu_ly_mat_can_bang": "balanced",
+    "best_params": {
+      "clf__C": 10,
+      "vec__ngram_range": [
+        1,
+        2
+      ]
+    },
+    "val_f1_mac_dinh": 0.9524,
+    "val_f1_tinh_chinh": 0.9524,
+    "dung_ban_tinh_chinh": true
+  },
+  "nguong": {
+    "nguong_toi_uu_val": 0.6801,
+    "val_f1_o_0.5": 0.9524,
+    "val_f1_o_nguong_moi": 0.9589,
+    "nguong_dung": 0.6801
+  },
+  "test_cuoi": {
+    "Precision": 0.7531,
+    "Recall": 0.9173,
+    "F1": 0.8271,
+    "ROC_AUC": 0.9678,
+    "PR_AUC": 0.8902,
+    "TN": 389,
+    "FP": 40,
+    "FN": 11,
+    "TP": 122
+  },
+  "test_theo_nhom_mau_cau": {
+    "mau_cau_da_thay_trong_train": {
+      "so_tin": 64,
+      "Precision": 0.9808,
+      "Recall": 1.0,
+      "F1": 0.9903,
+      "ROC_AUC": 1.0,
+      "PR_AUC": 1.0,
+      "TN": 12,
+      "FP": 1,
+      "FN": 0,
+      "TP": 51
+    },
+    "mau_cau_moi": {
+      "so_tin": 498,
+      "Precision": 0.6455,
+      "Recall": 0.8659,
+      "F1": 0.7396,
+      "ROC_AUC": 0.9514,
+      "PR_AUC": 0.7635,
+      "TN": 377,
+      "FP": 39,
+      "FN": 11,
+      "TP": 71
+    }
+  },
+  "cv5_train_val": {
+    "precision": "0.9165 ± 0.0199",
+    "recall": "0.9612 ± 0.0266",
+    "f1": "0.9380 ± 0.0166"
+  },
+  "thoi_gian_suy_luan": {
+    "batch_562_tin_s": 0.0295,
+    "1_tin_ms": 0.35
+  },
+  "phien_ban": {
+    "python": "3.13.8",
+    "sklearn": "1.9.1",
+    "pandas": "3.1.1",
+    "numpy": "2.5.4"
+  },
+  "export_check": {
+    "score_decimals": 12,
+    "n_jobs": 1,
+    "note": "Điểm/nhãn tính lại bằng pipeline đã xuất, không chọn lại ngưỡng theo test."
+  },
+  "selection_scope": {
+    "candidates": 27,
+    "includes_bow": true,
+    "criterion": "validation F1, tie by Precision; tuning CV uses train only",
+    "test_used_for_selection": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "release": "tv1-4-v2",
+  "ml": {
+    "config_sha256": "e4ec518bf2f37dc0fd9463b64e3c9db149a44b1a5e99a03d7625b5882eae3287",
+    "runtime_hashes": {
+      "traditional_ml/bo_sung_tv2_v2/version.json": "d5cdb3f3703bffb64e21b45d45706cbb5926a8860f610ee3c8d4bec8214ed8f6",
+      "data_features/bo_sung_tv1/privacy.py": "81d12272a77afa2908a8422a884e84b56bf9a4f5d05511dd907b15fafb2ed6c8",
+      "data_features/bo_sung_tv1_v2/vi_text_v2.py": "1898f5d9fa552b047985ad8bc4100fa4f84aa7db7af115691587642055a44f4d"
+    }
+  },
+  "dl_status": "retain prior Conv1D; no new DL candidate passes fixed validation and regression release gates",
+  "dataset_id": "vi-tv1-v2-808628074b11"
+}

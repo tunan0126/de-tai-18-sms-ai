@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: sms-spam-detector-ai
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: ALLOW_REGISTRATION
+        value: "1"
+      - key: TV4_DATABASE
+        value: /tmp/tv4.sqlite3

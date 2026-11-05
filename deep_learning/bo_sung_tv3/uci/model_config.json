@@ -1,0 +1,92 @@
+{
+  "selected": "conv1d",
+  "criterion": "validation F1 spam, tie by validation Precision",
+  "candidates": {
+    "lstm": {
+      "architecture": "lstm",
+      "threshold": 0.5635080337524414,
+      "model_file": "models/lstm.keras",
+      "model_sha256": "ddd6baed56437f8926cbb088d696cff514f72d7028fcd2cc06c4944ae2451845",
+      "validation": {
+        "Precision": 0.9265,
+        "Recall": 0.9692,
+        "F1": 0.9474,
+        "ROC_AUC": 0.998,
+        "PR_AUC": 0.9854,
+        "TN": 447,
+        "FP": 5,
+        "FN": 2,
+        "TP": 63
+      },
+      "epochs_run": 8,
+      "restored_epoch": 5,
+      "fit_seconds": 15.591,
+      "parameters": 703457
+    },
+    "conv1d": {
+      "architecture": "conv1d",
+      "threshold": 0.44142407178878784,
+      "model_file": "models/conv1d.keras",
+      "model_sha256": "e33d9e35039e8a52b252d3680fea5aff0e528b28796d182431790236df5d18e5",
+      "validation": {
+        "Precision": 0.9552,
+        "Recall": 0.9846,
+        "F1": 0.9697,
+        "ROC_AUC": 0.9991,
+        "PR_AUC": 0.9945,
+        "TN": 449,
+        "FP": 3,
+        "FN": 1,
+        "TP": 64
+      },
+      "epochs_run": 7,
+      "restored_epoch": 4,
+      "fit_seconds": 7.965,
+      "parameters": 713665
+    }
+  },
+  "dataset_id": "uci-sms-seed42-original-random-split",
+  "language": "uci",
+  "data_sha256": {
+    "train": "eee6e97ca8e868ed2864ae99bd14cb88a005bc08acd36f7a743deacbe1f94258",
+    "val": "d7bd40f092f855eb3664a667b426863f50bf4a1a7afcf8500172ca5bcd9dde7b",
+    "test": "197e006f922cd25ef934a0b3ec9e01a22e2e6756d792f89559c8c1b3b05bd5bb"
+  },
+  "preprocessing_sha256": "67dba2018f885874f0ffbc3386e28e9315a10b2e28327ad40f7bf1c00522ae5f",
+  "seed": 42,
+  "class_weight": {
+    "0": 0.5722643896268185,
+    "1": 3.9595185995623634
+  },
+  "max_epochs": 18,
+  "early_stopping": "val_loss, patience=3, min_delta=0.001, restore_best_weights=True",
+  "packages": {
+    "tensorflow": "2.21.0",
+    "keras": "3.15.1",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scikit-learn": "1.9.1"
+  },
+  "slide_basis": {
+    "chapter_7": [
+      85,
+      95,
+      98,
+      100,
+      158,
+      170,
+      171,
+      172,
+      173
+    ],
+    "chapter_8": [
+      66,
+      67,
+      155,
+      156,
+      157,
+      159
+    ]
+  },
+  "test_note": "Benchmark kế thừa TV1/TV2, không phải test mới chưa từng dùng."
+}

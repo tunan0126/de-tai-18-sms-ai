@@ -1,0 +1,81 @@
+{
+  "selected": "conv1d",
+  "candidates": {
+    "lstm": {
+      "architecture": "lstm",
+      "threshold": 0.4791546165943146,
+      "model_file": "models/lstm.keras",
+      "model_sha256": "bfc855b50ca75448a595355c8bce29ea3dbc3fa64f6521567c0790aec8b608fc",
+      "original_validation": {
+        "Precision": 0.9324,
+        "Recall": 0.9718,
+        "F1": 0.9517,
+        "ROC_AUC": 0.9859,
+        "PR_AUC": 0.9593,
+        "TN": 159,
+        "FP": 5,
+        "FN": 2,
+        "TP": 69
+      },
+      "authored_validation": {
+        "Precision": 0.9091,
+        "Recall": 1.0,
+        "F1": 0.9524,
+        "ROC_AUC": 0.9825,
+        "PR_AUC": 0.9803,
+        "TN": 18,
+        "FP": 2,
+        "FN": 0,
+        "TP": 20
+      },
+      "eligible": false,
+      "epochs_run": 7,
+      "restored_epoch": 4
+    },
+    "conv1d": {
+      "architecture": "conv1d",
+      "threshold": 0.6509048342704773,
+      "model_file": "models/conv1d.keras",
+      "model_sha256": "e0e7903e1fe04a386481f7fc3f756847c4eb745574611506fc4c795e250df5b1",
+      "original_validation": {
+        "Precision": 0.9589,
+        "Recall": 0.9859,
+        "F1": 0.9722,
+        "ROC_AUC": 0.993,
+        "PR_AUC": 0.9769,
+        "TN": 161,
+        "FP": 3,
+        "FN": 1,
+        "TP": 70
+      },
+      "authored_validation": {
+        "Precision": 0.8,
+        "Recall": 1.0,
+        "F1": 0.8889,
+        "ROC_AUC": 0.99,
+        "PR_AUC": 0.9917,
+        "TN": 15,
+        "FP": 5,
+        "FN": 0,
+        "TP": 20
+      },
+      "eligible": true,
+      "epochs_run": 9,
+      "restored_epoch": 6
+    }
+  },
+  "dataset_id": "vi-tv4-revision-290ff246dbd5",
+  "language": "vi",
+  "preprocessing_sha256": "e82fbb9438f0d958fb07a661440f2eef890f1c44e5bd1bdcbeb0400e710b472b",
+  "model_origin": "tv4_vi_revision",
+  "selection_criterion": "Same two-context validation criterion as ML revision; no regression/test used for fit or selection",
+  "source_inputs_sha256": {
+    "traditional_ml/bo_sung_tv2/vi/data/train.csv": "5aa95ac6423b663046b2c3b586cc1e27b0b947d639cca6520ea5c772d956c74e",
+    "traditional_ml/bo_sung_tv2/vi/data/val.csv": "5714f68dfe13d913f6aca68047dadebb5a82271753511841985c32ed9f1ac332",
+    "cloud_app/bo_sung_tv4_app/vi_model_revision/data/train_authored.csv": "187759e3f601e8b3b08bca01cdc4ffac7d389249f0adfcca7b2fd9c586fe6e9b",
+    "cloud_app/bo_sung_tv4_app/vi_model_revision/data/validation_authored.csv": "a46f180da041e2b34cb2ff0eee44b6f8a6d7b6e408ad6db2327fc55d66218c92"
+  },
+  "authored_weight": 6,
+  "seed": 42,
+  "source_script_sha256": "fdd2869ec84d6388da8ea3c8dcccfe6d9cbeda5122f0d1100187a5d2bf0b9300"
+}

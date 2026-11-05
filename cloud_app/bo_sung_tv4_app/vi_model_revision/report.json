@@ -1,0 +1,82 @@
+{
+  "selection": {
+    "representation": "char_wb",
+    "C": 1.0,
+    "authored_weight": 6.0,
+    "threshold": 0.58562407619,
+    "original_validation": {
+      "Precision": 0.9859,
+      "Recall": 0.9859,
+      "F1": 0.9859,
+      "ROC_AUC": 0.9981,
+      "PR_AUC": 0.9952,
+      "TN": 163,
+      "FP": 1,
+      "FN": 1,
+      "TP": 70
+    },
+    "authored_validation": {
+      "Precision": 0.8696,
+      "Recall": 1.0,
+      "F1": 0.9302,
+      "ROC_AUC": 0.975,
+      "PR_AUC": 0.9735,
+      "TN": 17,
+      "FP": 3,
+      "FN": 0,
+      "TP": 20
+    },
+    "eligible": true
+  },
+  "selection_criterion": "max min(F1 original validation, F1 authored validation), then mean F1, then min precision; original val Recall>=0.98, Precision>=0.90; authored Recall>=0.95",
+  "source_train": 1640,
+  "authored_train": 130,
+  "authored_validation": 40,
+  "source_test": {
+    "Precision": 0.8538,
+    "Recall": 0.8346,
+    "F1": 0.8441,
+    "ROC_AUC": 0.9667,
+    "PR_AUC": 0.9168,
+    "TN": 410,
+    "FP": 19,
+    "FN": 22,
+    "TP": 111
+  },
+  "original_source_test": {
+    "Precision": 0.7531,
+    "Recall": 0.9173,
+    "F1": 0.8271,
+    "ROC_AUC": 0.9678,
+    "PR_AUC": 0.8902,
+    "TN": 389,
+    "FP": 40,
+    "FN": 11,
+    "TP": 122
+  },
+  "regression_development": {
+    "Precision": 1.0,
+    "Recall": 1.0,
+    "F1": 1.0,
+    "ROC_AUC": 1.0,
+    "PR_AUC": 1.0,
+    "TN": 12,
+    "FP": 0,
+    "FN": 0,
+    "TP": 12
+  },
+  "original_regression_development": {
+    "Precision": 0.5,
+    "Recall": 0.9167,
+    "F1": 0.6471,
+    "ROC_AUC": 0.8889,
+    "PR_AUC": 0.9251,
+    "TN": 1,
+    "FP": 11,
+    "FN": 1,
+    "TP": 11
+  },
+  "provenance": "Authored synthetic development messages, not real collected SMS; original train/val/test unchanged. Regression cases excluded from fitting and selection; inherited test already used in prior research, not a new untouched holdout.",
+  "model_version": "5ca95f87443b",
+  "dataset_id": "vi-tv4-revision-290ff246dbd5"
+}

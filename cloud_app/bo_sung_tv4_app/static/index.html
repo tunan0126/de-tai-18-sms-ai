@@ -1,0 +1,50 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lọc tin nhắn - TV4</title><link rel="stylesheet" href="/static/app.css?v=simple-1"><script src="/static/app.js?v=simple-1" defer></script></head>
+<body>
+<section id="auth-view" class="auth-view"><div class="auth-brand">Lọc tin nhắn <span>Đề tài 18 · TV4</span></div><div class="auth-card"><h1 id="auth-title">Đăng nhập</h1><p class="note">Mỗi tài khoản có lịch sử và quy tắc riêng.</p><form id="auth-form" novalidate><div id="display-field" hidden><label class="field" for="display-name">Tên hiển thị</label><input id="display-name" maxlength="60" autocomplete="nickname"></div><label class="field" for="username">Tên đăng nhập</label><input id="username" maxlength="32" autocomplete="username" required><label class="field" for="password">Mật khẩu</label><input id="password" type="password" minlength="10" maxlength="128" autocomplete="current-password" required><div id="confirm-field" hidden><label class="field" for="password-confirm">Nhập lại mật khẩu</label><input id="password-confirm" type="password" autocomplete="new-password" maxlength="128"></div><p id="auth-error" class="error" role="alert" hidden></p><button id="auth-submit" class="primary submit" type="submit">Đăng nhập</button></form><button id="auth-toggle" class="auth-toggle" hidden>Tạo tài khoản demo</button><p class="help">Dùng tài khoản riêng để thử lịch sử và quy tắc.</p></div></section>
+<div id="app-view" hidden><a class="skip" href="#main">Đến nội dung chính</a>
+<header class="topbar">
+  <div class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 3h16v13H9l-5 5V3Z"/><path d="M8 8h8M8 12h5"/></svg>Lọc tin nhắn</div>
+  <nav class="main-nav" aria-label="Điều hướng chính">
+    <button class="nav" data-page="check" aria-current="page">Kiểm tra</button>
+    <button class="nav" data-page="history">Lịch sử</button>
+    <details id="manage-menu" class="manage-menu"><summary>Quản lý</summary><div class="menu-items">
+      <button class="nav" data-page="rules">Chặn / Cho phép</button>
+      <button class="nav" data-page="feedback">Phản hồi đã gửi</button>
+      <button class="nav" data-page="guide">Hướng dẫn demo</button>
+    </div></details>
+  </nav>
+  <div class="account"><span id="account-name"></span><button id="logout" class="quiet">Đăng xuất</button></div>
+</header>
+<main id="main" tabindex="-1"><div id="status" class="status" role="status" aria-live="polite"></div>
+<section id="page-check" class="page">
+<div class="page-heading"><h1>Kiểm tra tin nhắn</h1><p class="intro">Nhập nội dung, bấm kiểm tra và xem kết quả bên cạnh.</p></div>
+<div class="workspace">
+<form id="check-form" class="panel input-panel" novalidate>
+  <div class="editor-heading"><label for="text" class="field">Nội dung tin nhắn</label><button id="clear-text" class="text-button" type="button" disabled>Xóa nội dung</button></div>
+  <textarea id="text" maxlength="2000" aria-required="true" aria-describedby="text-help text-error" placeholder="Nhập hoặc dán tin nhắn tại đây..."></textarea>
+  <div class="editor-meta"><span id="text-help"><span id="count">0</span> / 2.000 ký tự</span></div>
+  <p id="text-error" class="error" role="alert" hidden></p>
+  <div class="samples" aria-label="Tin mẫu"><span>Thử tin mẫu</span><button type="button" data-sample="ham">Mẫu hợp lệ</button><button type="button" data-sample="spam">Mẫu spam</button></div>
+  <details id="check-options" class="check-options">
+    <summary><span>Tùy chọn kiểm tra</span><span id="options-summary">Tiếng Việt · ML</span></summary>
+    <div class="options-body">
+      <div class="row"><div><label for="language" class="field">Ngôn ngữ tin</label><select id="language"><option value="vi">Tiếng Việt</option><option value="uci">Tiếng Anh (UCI)</option></select></div><div><label for="model" class="field">Mô hình</label><select id="model"><option value="ml">Học máy (ML)</option><option value="dl">Học sâu (DL)</option></select></div></div>
+      <p class="help">Tiếng Việt mặc định dùng ML v2. DL giữ bản trước để đối chiếu.</p>
+      <label for="sender" class="field">Người gửi <span class="optional">(không bắt buộc)</span></label><input id="sender" maxlength="80" autocomplete="off" aria-describedby="sender-help" placeholder="Ví dụ: DEMO-A">
+      <p id="sender-help" class="help">Chỉ cần khi thử quy tắc chặn / cho phép.</p>
+      <button type="button" data-sample="rule" class="small-btn">Mẫu kiểm tra A/B</button>
+      <p class="help privacy-help">Khi lưu, số điện thoại và email được che tự động; một số tên riêng vẫn có thể còn.</p>
+    </div>
+  </details>
+  <div class="submit-area"><label class="check"><input id="save" type="checkbox"><span>Lưu tin vào lịch sử riêng</span></label><button id="submit" class="primary submit" type="submit">Kiểm tra tin nhắn <span aria-hidden="true">→</span></button></div>
+</form>
+<section class="panel result-panel" id="result" aria-labelledby="result-title"><h2 id="result-title">Kết quả</h2><div class="empty"><strong>Kết quả sẽ hiện ở đây</strong><p>Nhập tin nhắn rồi bấm “Kiểm tra tin nhắn”.</p></div></section>
+</div></section>
+<section id="page-history" class="page" hidden><div class="toolbar"><div><h1>Lịch sử riêng</h1><p class="note">Những tin bạn đã chọn lưu.</p></div><button id="clear-history" class="danger">Xóa lịch sử tài khoản này</button></div><div class="panel"><label class="field" for="filter">Lọc kết quả</label><select id="filter"><option value="all">Tất cả</option><option value="spam">Spam</option><option value="ham">Hợp lệ</option></select><div id="history-list" data-css="inline-2"></div><div class="pager"><button id="prev-page">Trang trước</button><span id="page-info"></span><button id="next-page">Trang sau</button></div></div></section>
+<section id="page-rules" class="page" hidden><h1>Chặn / Cho phép</h1><p class="intro">Quy tắc chỉ áp dụng cho tài khoản hiện tại. Mỗi người gửi có một quy tắc.</p><div class="panel"><form id="rule-form" class="rule-form"><label for="rule-sender" class="field">Người gửi<input id="rule-sender" required maxlength="80" placeholder="Ví dụ: DEMO-A"></label><label for="rule-type" class="field">Quy tắc<select id="rule-type"><option value="block">Chặn</option><option value="allow">Cho phép</option></select></label><button class="primary" type="submit">Lưu quy tắc</button></form><p class="note">Quy tắc được ưu tiên trước mô hình. Thay đổi sang quy tắc ngược lại cần xác nhận.</p><div id="rule-list"></div></div></section>
+<section id="page-feedback" class="page" hidden><h1>Phản hồi đã gửi</h1><p class="intro">Phản hồi đang chờ rà soát, không tự thay đổi mô hình.</p><div id="feedback-list" class="panel"></div></section>
+<section id="page-guide" class="page" hidden><h1>Kịch bản demo</h1><p class="intro">Đăng nhập bằng hai tài khoản trên hai cửa sổ trình duyệt riêng để chứng minh tách biệt dữ liệu.</p><div class="panel"><ol class="step-list"><li>Ở tài khoản A, chọn tin mẫu, bật lưu và kiểm tra bằng ML. Xem điểm, ngưỡng và phiên bản thật.</li><li>Mở “Tùy chọn kiểm tra”, đổi sang DL và kiểm tra lại cùng tin. Kết quả có thể khác nhau vì mô hình khác; không đổi nhãn theo mong muốn.</li><li>Chọn “Báo sai”, chọn nhãn đề xuất rồi lưu. Xem lại ở Quản lý → Phản hồi đã gửi.</li><li>Trong tùy chọn, chọn “Mẫu kiểm tra A/B”. Kiểm tra, mở “Quy tắc người gửi” ở kết quả rồi chặn DEMO-A. Kiểm tra lại và chỉ ra nguồn quyết định là quy tắc riêng.</li><li>Ở tài khoản B, dùng cùng mẫu. B không có luật của A và không xem được lịch sử hay phản hồi A.</li><li>Xóa/gỡ luật cần xác nhận. Đăng xuất A; tải lại trang phải yêu cầu đăng nhập.</li></ol><p class="privacy">Điểm model không phải độ chắc chắn đúng. ML tiếng Việt dùng bản v2; DL giữ bản trước sau kiểm tra ứng viên mới; phản hồi chỉ để rà soát. Che định danh tự động không phát hiện mọi tên riêng.</p></div></section>
+<footer>Đề tài 18 · Bản demo trên máy tính · Chỉ phân loại trong ứng dụng.</footer></main></div>
+<dialog id="feedback-dialog" aria-labelledby="feedback-title"><form id="feedback-form"><h2 id="feedback-title">Báo phân loại sai</h2><p>Bạn cho rằng tin này thuộc nhóm nào? Phản hồi sẽ được lưu để rà soát.</p><label class="field" for="correct-label">Nhãn đề xuất</label><select id="correct-label" required><option value="ham">Hợp lệ</option><option value="spam">Spam</option></select><label class="field" for="feedback-note" data-css="inline-3">Ghi chú <span class="optional">(không bắt buộc)</span></label><textarea id="feedback-note" maxlength="300"></textarea><div class="buttons"><button type="button" data-close="feedback-dialog">Hủy</button><button class="primary" type="submit">Lưu phản hồi</button></div></form></dialog>
+<dialog id="confirm-dialog" aria-labelledby="confirm-title"><h2 id="confirm-title">Xác nhận thao tác</h2><p id="confirm-text"></p><div class="buttons"><button type="button" data-close="confirm-dialog">Hủy</button><button id="confirm-yes" class="primary">Xác nhận</button></div></dialog>
+</body></html>

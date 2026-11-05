@@ -1,0 +1,17 @@
+{
+  "language": "vi",
+  "dataset_id": "vi-supplement-969f31901e68",
+  "model_sha256": "e9274f245da8f6c0171f51d603ccb0a66fb577e07e981249ba8566c69ed82326",
+  "source_train_script_sha256": "14ad01b94fc25445e7f7f62ce0366b2afb70cf2870d8b1b0384acfffaccb9819",
+  "normalization": "vi-redaction-v1",
+  "evaluation_note": "Kế thừa mã TV2 gốc: các thí nghiệm báo điểm test; không phải test mới hoàn toàn chưa dùng.",
+  "packages": {
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0"
+  },
+  "score_decimals": 12,
+  "source_selection_script_sha256": "f59727c977b53156a4ee3cdc03bb82350519a78495ab43d4ac162fa09a71b4c1"
+}
