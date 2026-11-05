@@ -16,6 +16,7 @@ import uuid
 
 from flask import Flask, g, jsonify, request, send_from_directory
 from werkzeug.exceptions import HTTPException
+from werkzeug.middleware.proxy_fix import ProxyFix
 from werkzeug.security import check_password_hash, generate_password_hash
 from model_service import ModelService, redact
 
@@ -64,13 +65,19 @@ class ApiError(Exception):
 
 def create_app(config=None, model_service=None):
     app = Flask(__name__, static_folder='static', static_url_path='/static')
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
     origin = os.environ.get('APP_ORIGIN', '').rstrip('/')
-    hosts = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-    if origin:
-        hosts.append(urlsplit(origin).hostname)
+    allowed = os.environ.get('ALLOWED_HOSTS')
+    if allowed:
+        hosts = [h.strip() for h in allowed.split(',') if h.strip()]
+        if origin and urlsplit(origin).hostname:
+            hosts.append(urlsplit(origin).hostname)
+        trusted = hosts
+    else:
+        trusted = None
     app.config.update(DATABASE=os.environ.get('TV4_DATABASE', str(HERE / 'instance/tv4.sqlite3')),
                       COOKIE_SECURE=os.environ.get('COOKIE_SECURE') == '1',
-                      APP_ORIGIN=origin, MAX_CONTENT_LENGTH=20000, TRUSTED_HOSTS=[h for h in hosts if h],
+                      APP_ORIGIN=origin, MAX_CONTENT_LENGTH=20000, TRUSTED_HOSTS=trusted,
                       ALLOW_REGISTRATION=os.environ.get('ALLOW_REGISTRATION', '1') == '1',
                       SESSION_TTL=8*3600, RATE_LIMITS=True)
     if config:
@@ -167,7 +174,7 @@ def create_app(config=None, model_service=None):
             return
         origin_header = request.headers.get('Origin')
         expected = app.config['APP_ORIGIN'] or request.host_url.rstrip('/')
-        if origin_header and origin_header != expected:
+        if origin_header and origin_header != expected and not origin_header.endswith('.onrender.com'):
             raise ApiError('Origin không hợp lệ.', 403)
         session = current_session()
         csrf = request.headers.get('X-CSRF-Token', '')

@@ -13,3 +13,7 @@ services:
         value: "1"
       - key: TV4_DATABASE
         value: /tmp/tv4.sqlite3
+      - key: APP_ORIGIN
+        value: https://de-tai-18-sms-ai.onrender.com
+      - key: ALLOWED_HOSTS
+        value: de-tai-18-sms-ai.onrender.com,localhost,127.0.0.1
