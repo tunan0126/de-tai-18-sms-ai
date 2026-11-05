@@ -87,6 +87,14 @@ def create_app(config=None, model_service=None):
     with closing(sqlite3.connect(db_path)) as conn:
         conn.execute('PRAGMA journal_mode=WAL')
         conn.executescript(SCHEMA)
+        if not conn.execute('SELECT 1 FROM users LIMIT 1').fetchone():
+            demo_users = [
+                (uuid.uuid4().hex, 'admin', 'Quản trị viên', generate_password_hash('Admin@123456'), now()),
+                (uuid.uuid4().hex, 'demo_a', 'Tài khoản A', generate_password_hash('Demo@123456'), now()),
+                (uuid.uuid4().hex, 'demo_b', 'Tài khoản B', generate_password_hash('Demo@123456'), now()),
+            ]
+            conn.executemany('INSERT INTO users VALUES(?,?,?,?,?)', demo_users)
+            conn.commit()
     service = model_service or ModelService()
     app.extensions['models'] = service
     dummy_hash = generate_password_hash('invalid-account-' + secrets.token_hex(12))
