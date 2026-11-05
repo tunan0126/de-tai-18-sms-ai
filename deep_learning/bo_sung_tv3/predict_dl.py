@@ -21,6 +21,14 @@ sys.path.insert(0, str(ROOT / "data_features/bo_sung_tv1"))
 from privacy import redact
 
 
+def match_sha256(path, expected):
+    data = Path(path).read_bytes()
+    if hashlib.sha256(data).hexdigest() == expected: return True
+    norm_lf = data.replace(b'\r\n', b'\n')
+    if hashlib.sha256(norm_lf).hexdigest() == expected: return True
+    return hashlib.sha256(norm_lf.replace(b'\n', b'\r\n')).hexdigest() == expected
+
+
 def load_model(language="vi", architecture=None):
     if language not in ("vi", "uci"):
         raise ValueError("language phải là vi hoặc uci")
@@ -34,7 +42,7 @@ def load_model(language="vi", architecture=None):
     if hashlib.sha256(path.read_bytes()).hexdigest() != candidate["model_sha256"]:
         raise ValueError("Hash mô hình không khớp model_config.json")
     prep_path = base / "preprocessing.json"
-    if hashlib.sha256(prep_path.read_bytes()).hexdigest() != config["preprocessing_sha256"]:
+    if not match_sha256(prep_path, config["preprocessing_sha256"]):
         raise ValueError("Hash bộ xử lý văn bản không khớp")
     prep = json.loads(prep_path.read_text(encoding="utf-8"))
     standardize = unicode_lower if prep["standardize"] == "unicode_lower" else prep["standardize"]

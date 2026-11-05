@@ -19,6 +19,17 @@ sys.path.insert(0, str(TV1))
 from privacy import redact
 
 
+def match_sha256(path, expected):
+    data = Path(path).read_bytes()
+    if hashlib.sha256(data).hexdigest() == expected:
+        return True
+    norm_lf = data.replace(b'\r\n', b'\n')
+    if hashlib.sha256(norm_lf).hexdigest() == expected:
+        return True
+    crlf = norm_lf.replace(b'\n', b'\r\n')
+    return hashlib.sha256(crlf).hexdigest() == expected
+
+
 def import_loader(name, path):
     sys.path.insert(0, str(path.parent))
     spec = importlib.util.spec_from_file_location(name, path)
@@ -62,10 +73,10 @@ class ModelService:
                 if self.uses_v2(model,language):
                     base=ROOT/('traditional_ml/bo_sung_tv2_v2' if model=='ml' else 'deep_learning/bo_sung_tv3_v2')
                     paths={'ml':base/'config.json','dl':base/'model_config.json'}
-                    if hashlib.sha256(paths[model].read_bytes()).hexdigest()!=self.v2[model]['config_sha256']:
+                    if not match_sha256(paths[model], self.v2[model]['config_sha256']):
                         raise ValueError('Config v2 không khớp snapshot triển khai')
                     for name,digest in self.v2[model]['runtime_hashes'].items():
-                        if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:
+                        if not match_sha256(ROOT/name, digest):
                             raise ValueError('Artifact/phụ thuộc v2 không khớp snapshot triển khai')
                     self.cache[key]=self.loader_for(model,language).load_model(language)
                     return self.cache[key]
@@ -81,23 +92,23 @@ class ModelService:
                     if digest != version['model_sha256']:
                         raise ValueError('Hash model ML không khớp phiên bản')
                     if self.revised(model, language):
-                        if digest != self.revision['ml']['model_sha256'] or hashlib.sha256((base/'config.json').read_bytes()).hexdigest()!=self.revision['ml']['config_sha256']:
+                        if digest != self.revision['ml']['model_sha256'] or not match_sha256(base/'config.json', self.revision['ml']['config_sha256']):
                             raise ValueError('Bản sửa ML chưa khớp phiên bản triển khai')
                         config=json.loads((base/'config.json').read_text(encoding='utf-8'))
                         self.cache[key]=(joblib.load(model_path),float(config['nguong']),version)
                 elif self.revised(model, language):
                     base=REVISION/'dl'
                     config_path=base/'model_config.json'
-                    if hashlib.sha256(config_path.read_bytes()).hexdigest()!=self.revision['dl']['config_sha256']:
+                    if not match_sha256(config_path, self.revision['dl']['config_sha256']):
                         raise ValueError('Bản sửa DL chưa khớp phiên bản triển khai')
                     config=json.loads(config_path.read_text(encoding='utf-8'))
                     prep_path=base/'preprocessing.json'
-                    if hashlib.sha256(prep_path.read_bytes()).hexdigest()!=config['preprocessing_sha256']:
+                    if not match_sha256(prep_path, config['preprocessing_sha256']):
                         raise ValueError('Bộ xử lý DL sửa không khớp hash')
                     prep=json.loads(prep_path.read_text(encoding='utf-8'))
                     candidate=config['candidates'][config['selected']]
                     model_path=base/candidate['model_file']
-                    if hashlib.sha256(model_path.read_bytes()).hexdigest()!=candidate['model_sha256']:
+                    if not match_sha256(model_path, candidate['model_sha256']):
                         raise ValueError('Model DL sửa không khớp hash')
                     module=self.loaders['dl']
                     vectorizer=module.keras.layers.TextVectorization(max_tokens=prep['max_tokens'],standardize=module.unicode_lower,
