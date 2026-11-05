@@ -799,6 +799,26 @@ textarea::placeholder {
   to { transform: rotate(360deg); }
 }
 
+
+/* Splash Loader */
+.splash-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+  color: var(--slate-600);
+  font-weight: 500;
+  font-size: 15px;
+}
+.splash-view .spinner {
+  margin: 0;
+  width: 40px;
+  height: 40px;
+}
+
 /* Auth View */
 .auth-view {
   min-height: 100vh;

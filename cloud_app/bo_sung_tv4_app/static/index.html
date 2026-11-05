@@ -10,7 +10,14 @@
 <body>
 
 <!-- Màn hình Đăng nhập / Đăng ký -->
-<section id="auth-view" class="auth-view">
+<!-- Màn hình chờ kiểm tra phiên (Khử nhấp nháy FOUC) -->
+<div id="splash-view" class="splash-view">
+  <div class="spinner" aria-hidden="true"></div>
+  <span>Đang tải hệ thống...</span>
+</div>
+
+<!-- Màn hình Đăng nhập / Đăng ký -->
+<section id="auth-view" class="auth-view" hidden>
   <div class="auth-container">
     <div class="auth-brand">
       <div class="brand-badge-icon">
