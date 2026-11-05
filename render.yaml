@@ -13,6 +13,8 @@ services:
         value: "1"
       - key: TV4_DATABASE
         value: /tmp/tv4.sqlite3
+      - key: COOKIE_SECURE
+        value: "1"
       - key: APP_ORIGIN
         value: https://de-tai-18-sms-ai.onrender.com
       - key: ALLOWED_HOSTS

@@ -162,7 +162,8 @@ def create_app(config=None, model_service=None):
         response = jsonify(user=dict(user) if user else None, csrf=csrf,
                            registration_enabled=app.config['ALLOW_REGISTRATION'])
         response.status_code = status
-        response.set_cookie(COOKIE, token, httponly=True, secure=app.config['COOKIE_SECURE'],
+        secure_flag = app.config['COOKIE_SECURE'] or request.is_secure
+        response.set_cookie(COOKIE, token, httponly=True, secure=secure_flag,
                             samesite='Lax', max_age=app.config['SESSION_TTL'], path='/')
         return response
 
